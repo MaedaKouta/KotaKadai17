@@ -13,6 +13,11 @@
 		B9EBE36F27F1799600E6F919 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B9EBE36D27F1799600E6F919 /* Main.storyboard */; };
 		B9EBE37127F1799700E6F919 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B9EBE37027F1799700E6F919 /* Assets.xcassets */; };
 		B9EBE37427F1799700E6F919 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B9EBE37227F1799700E6F919 /* LaunchScreen.storyboard */; };
+		B9EBE37C27F17D9000E6F919 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = B9EBE37B27F17D9000E6F919 /* .swiftlint.yml */; };
+		B9EBE37F27F17F1500E6F919 /* CheckItemsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9EBE37E27F17F1500E6F919 /* CheckItemsTableViewCell.swift */; };
+		B9EBE38127F1830300E6F919 /* AdditionNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9EBE38027F1830300E6F919 /* AdditionNameViewController.swift */; };
+		B9EBE38327F1949800E6F919 /* AlertAppear.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9EBE38227F1949800E6F919 /* AlertAppear.swift */; };
+		B9EBE38527F1994B00E6F919 /* ChangeNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9EBE38427F1994B00E6F919 /* ChangeNameViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +29,11 @@
 		B9EBE37027F1799700E6F919 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B9EBE37327F1799700E6F919 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B9EBE37527F1799700E6F919 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B9EBE37B27F17D9000E6F919 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
+		B9EBE37E27F17F1500E6F919 /* CheckItemsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckItemsTableViewCell.swift; sourceTree = "<group>"; };
+		B9EBE38027F1830300E6F919 /* AdditionNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdditionNameViewController.swift; sourceTree = "<group>"; };
+		B9EBE38227F1949800E6F919 /* AlertAppear.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertAppear.swift; sourceTree = "<group>"; };
+		B9EBE38427F1994B00E6F919 /* ChangeNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeNameViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,11 +68,16 @@
 			children = (
 				B9EBE36727F1799600E6F919 /* AppDelegate.swift */,
 				B9EBE36927F1799600E6F919 /* SceneDelegate.swift */,
+				B9EBE38227F1949800E6F919 /* AlertAppear.swift */,
+				B9EBE37E27F17F1500E6F919 /* CheckItemsTableViewCell.swift */,
+				B9EBE38027F1830300E6F919 /* AdditionNameViewController.swift */,
+				B9EBE38427F1994B00E6F919 /* ChangeNameViewController.swift */,
 				B9EBE36B27F1799600E6F919 /* ViewController.swift */,
 				B9EBE36D27F1799600E6F919 /* Main.storyboard */,
 				B9EBE37027F1799700E6F919 /* Assets.xcassets */,
 				B9EBE37227F1799700E6F919 /* LaunchScreen.storyboard */,
 				B9EBE37527F1799700E6F919 /* Info.plist */,
+				B9EBE37B27F17D9000E6F919 /* .swiftlint.yml */,
 			);
 			path = KotaKadai17;
 			sourceTree = "<group>";
@@ -77,6 +92,7 @@
 				B9EBE36027F1799600E6F919 /* Sources */,
 				B9EBE36127F1799600E6F919 /* Frameworks */,
 				B9EBE36227F1799600E6F919 /* Resources */,
+				B9EBE37D27F17DF900E6F919 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -125,6 +141,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B9EBE37C27F17D9000E6F919 /* .swiftlint.yml in Resources */,
 				B9EBE37427F1799700E6F919 /* LaunchScreen.storyboard in Resources */,
 				B9EBE37127F1799700E6F919 /* Assets.xcassets in Resources */,
 				B9EBE36F27F1799600E6F919 /* Main.storyboard in Resources */,
@@ -133,14 +150,38 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		B9EBE37D27F17DF900E6F919 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		B9EBE36027F1799600E6F919 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				B9EBE36C27F1799600E6F919 /* ViewController.swift in Sources */,
+				B9EBE38127F1830300E6F919 /* AdditionNameViewController.swift in Sources */,
 				B9EBE36827F1799600E6F919 /* AppDelegate.swift in Sources */,
 				B9EBE36A27F1799600E6F919 /* SceneDelegate.swift in Sources */,
+				B9EBE37F27F17F1500E6F919 /* CheckItemsTableViewCell.swift in Sources */,
+				B9EBE38327F1949800E6F919 /* AlertAppear.swift in Sources */,
+				B9EBE38527F1994B00E6F919 /* ChangeNameViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
