@@ -12,7 +12,7 @@ class CheckItemsTableViewCell: UITableViewCell {
     @IBOutlet private weak var checkImage: UIImageView!
     @IBOutlet private weak var nameLabel: UILabel!
 
-    func config(checkItem: CheckItem) {
+    func configure(checkItem: CheckItem) {
         checkImage.isHidden = !checkItem.isChecked
         nameLabel.text = checkItem.name
     }

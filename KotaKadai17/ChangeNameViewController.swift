@@ -7,27 +7,23 @@
 
 import UIKit
 
-protocol ChangeNameViewControllerDelegate: AnyObject {
-    func changeName(name: String, index: Int)
-}
-
 class ChangeNameViewController: UIViewController {
 
-    struct Target {
-        let index: Int
-        let name: String
-    }
-
     private let alertAppear = AlertAppear()
-    private var target: Target?
-    weak var delegate: ChangeNameViewControllerDelegate?
+    private var target: CheckItem!
+
+    private var didChange: ((CheckItem) -> Void)!
+
     @IBOutlet private weak var nameTextField: UITextField!
 
-    static func instatiateWithNavigationContoroller(delegate: ChangeNameViewControllerDelegate, target: Target) -> UINavigationController {
+    static func instatiateWithNavigationContoroller(
+        target: CheckItem,
+        didChange: @escaping ((CheckItem) -> Void)
+    ) -> UINavigationController {
         let changeNameNC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ChangeNameNC") as! UINavigationController
         let changeNameVC = changeNameNC.topViewController as! ChangeNameViewController
-        changeNameVC.delegate = delegate
-        changeNameVC.setData(target: target)
+        changeNameVC.didChange = didChange
+        changeNameVC.target = target
         return changeNameNC
     }
 
@@ -46,15 +42,7 @@ class ChangeNameViewController: UIViewController {
             present(alert, animated: true)
             return
         }
-        guard let target = target else {
-            assertionFailure("target is nil")
-            return
-        }
-        delegate?.changeName(name: name, index: target.index)
-    }
-
-    func setData(target: Target) {
-        self.target = target
+        didChange(.init(name: name, isChecked: target.isChecked))
     }
 
 }
