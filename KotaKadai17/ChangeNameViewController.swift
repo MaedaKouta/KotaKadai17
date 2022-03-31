@@ -13,16 +13,27 @@ protocol ChangeNameViewControllerDelegate: AnyObject {
 
 class ChangeNameViewController: UIViewController {
 
-    struct Target {
-        let index: Int
-        let name: String
-    }
+//    struct Target {
+//        let index: Int
+//        let name: String
+//    }
 
     private let alertAppear = AlertAppear()
-    private var target: Target?
+    // private var target: Target?
+    private var target: CheckItem!
+    private var didChange: ((CheckItem) -> Void)!
     weak var delegate: ChangeNameViewControllerDelegate?
     @IBOutlet private weak var nameTextField: UITextField!
 
+    static func instatiateWithNavigationContoroller(target: CheckItem, didChange: @escaping ((CheckItem) -> Void)) -> UINavigationController {
+        let changeNameNC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ChangeNameNC") as! UINavigationController
+        let changeNameVC = changeNameNC.topViewController as! ChangeNameViewController
+        changeNameVC.didChange = didChange
+        changeNameVC.target = target
+        return changeNameNC
+    }
+
+/*
     static func instatiateWithNavigationContoroller(delegate: ChangeNameViewControllerDelegate, target: Target) -> UINavigationController {
         let changeNameNC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ChangeNameNC") as! UINavigationController
         let changeNameVC = changeNameNC.topViewController as! ChangeNameViewController
@@ -30,7 +41,7 @@ class ChangeNameViewController: UIViewController {
         changeNameVC.setData(target: target)
         return changeNameNC
     }
-
+*/
     override func viewDidLoad() {
         super.viewDidLoad()
         guard let target = target else {
@@ -46,15 +57,7 @@ class ChangeNameViewController: UIViewController {
             present(alert, animated: true)
             return
         }
-        guard let target = target else {
-            assertionFailure("target is nil")
-            return
-        }
-        delegate?.changeName(name: name, index: target.index)
-    }
-
-    func setData(target: Target) {
-        self.target = target
+        didChange(.init(name: name, isChecked: target.isChecked))
     }
 
 }

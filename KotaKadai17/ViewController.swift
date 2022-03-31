@@ -57,11 +57,12 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
         present(
             ChangeNameViewController.instatiateWithNavigationContoroller(
-                delegate: self,
-                target: .init(
-                    index: indexPath.row,
-                    name: checkItems[indexPath.row].name
-                )
+                target: checkItems[indexPath.row],
+                didChange: { [weak self] in
+                    self?.checkItems[indexPath.row] = $0
+                    self?.dismiss(animated: true, completion: nil)
+                    self?.tableView.reloadData()
+                }
             ),
             animated: true,
             completion: nil
