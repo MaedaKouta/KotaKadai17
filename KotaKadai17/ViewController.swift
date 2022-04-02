@@ -25,7 +25,12 @@ class ViewController: UIViewController {
     // itemの追加画面へ遷移
     @IBAction private func didTapAddNameButton(_ sender: Any) {
         present(
-            AdditionNameViewController.instantiateWithNavigationController(delegate: self),
+            AdditionNameViewController.instantiateWithNavigationController(
+                didAdd: { [weak self] in
+                    self?.checkItems.append($0)
+                    self?.dismiss(animated: true, completion: nil)
+                    self?.tableView.reloadData()
+                }),
             animated: true,
             completion: nil
         )
@@ -43,7 +48,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! CheckItemsTableViewCell
-        cell.config(checkItem: checkItems[indexPath.row])
+        cell.configure(checkItem: checkItems[indexPath.row])
         return cell
     }
 
@@ -75,22 +80,6 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
             checkItems.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .automatic)
         }
-    }
-
-}
-
-extension ViewController: AdditionNameViewControllerDelegate, ChangeNameViewControllerDelegate {
-
-    func addName(name: String) {
-        checkItems.append(.init(name: name, isChecked: false))
-        dismiss(animated: true, completion: nil)
-        tableView.reloadData()
-    }
-
-    func changeName(name: String, index: Int) {
-        checkItems[index].name = name
-        dismiss(animated: true, completion: nil)
-        tableView.reloadData()
     }
 
 }

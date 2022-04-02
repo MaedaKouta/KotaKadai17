@@ -7,20 +7,16 @@
 
 import UIKit
 
-protocol AdditionNameViewControllerDelegate: AnyObject {
-    func addName(name: String)
-}
-
 class AdditionNameViewController: UIViewController {
 
     @IBOutlet private weak var nameTextField: UITextField!
     private let alertAppear = AlertAppear()
-    weak var delegate: AdditionNameViewControllerDelegate?
+    private var didAdd: ((CheckItem) -> Void)!
 
-    static func instantiateWithNavigationController(delegate: AdditionNameViewControllerDelegate) -> UINavigationController {
+    static func instantiateWithNavigationController(didAdd: @escaping (CheckItem) -> Void) -> UINavigationController {
         let additionNameNC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "AdditionNameNC") as! UINavigationController
         let additionNameVC = additionNameNC.topViewController as! AdditionNameViewController
-        additionNameVC.delegate = delegate
+        additionNameVC.didAdd = didAdd
         return additionNameNC
     }
 
@@ -30,7 +26,7 @@ class AdditionNameViewController: UIViewController {
             present(alert, animated: true)
             return
         }
-        delegate?.addName(name: name)
+        didAdd(.init(name: name, isChecked: false))
     }
 
 }
